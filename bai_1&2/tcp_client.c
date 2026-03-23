@@ -1,5 +1,5 @@
 /*
- * Bài tập 1 - tcp_client
+ * Bài tập 1
  * Kết nối đến server theo địa chỉ IP và cổng từ tham số dòng lệnh.
  * Nhận dữ liệu từ bàn phím và gửi đến server.
  * Cách chạy: ./tcp_client <địa_chỉ_IP> <cổng>
@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
     }
     printf("Kết nối thành công!\n");
 
-    /* Nhận file chào từ server (nhận đến khi server shutdown SHUT_WR => EOF) */
+    /* Nhận file chào từ server */
     printf("--------------------------------------------------\n");
     printf("[Thông báo từ server]:\n");
     char buf[BUFFER_SIZE];
