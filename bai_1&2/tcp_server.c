@@ -129,7 +129,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    /* Cho phép tái sử dụng địa chỉ (tránh lỗi "Address already in use") */
+    /* Cho phép tái sử dụng địa chỉ */
     int opt = 1;
     setsockopt(listener, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
 
@@ -188,8 +188,7 @@ int main(int argc, char *argv[]) {
         } else {
             printf("[Server] Đã gửi file chào thành công.\n");
         }
-        /* Báo hiệu đã gửi xong welcome (không gửi thêm nữa từ phía server)
-           => client nhận được EOF, biết welcome đã kết thúc, chuyển sang nhập liệu */
+        /* Báo hiệu đã gửi xong welcome => client nhận được EOF, biết welcome đã kết thúc, chuyển sang nhập liệu */
         shutdown(client, SHUT_WR);
 
         /* Nhận dữ liệu từ client và ghi vào file log */

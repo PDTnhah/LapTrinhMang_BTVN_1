@@ -188,7 +188,7 @@ int main(int argc, char *argv[])
     printf("    File log : %s\n", log_file);
     printf("    Nhấn Ctrl+C để dừng.\n\n");
 
-    /* 4. Vòng lặp chấp nhận kết nối (Iterative server) */
+    /* 4. Vòng lặp chấp nhận kết nối */
     while (1) {
         struct sockaddr_in client_addr;
         socklen_t client_addr_len = sizeof(client_addr);
