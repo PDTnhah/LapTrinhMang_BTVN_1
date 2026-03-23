@@ -1,0 +1,13 @@
+=== Kết nối từ 127.0.0.1 ===
+thanh
+=== Kết thúc phiên, tổng 6 bytes ===
+
+=== Kết nối từ 127.0.0.1 ===
+=== Kết thúc phiên, tổng 0 bytes ===
+
+=== Kết nối từ 127.0.0.1 ===
+thanh
+=== Kết thúc phiên, tổng 6 bytes ===
+
+=== Kết nối từ 127.0.0.1 ===
+hello server
