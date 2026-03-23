@@ -1,14 +1,10 @@
 /*
- * sv_client.c
  * Bài tập 3
  *
  * Chương trình sv_client: cho phép người dùng nhập thông tin sinh viên
  * (MSSV, họ tên, ngày sinh, điểm TB) rồi đóng gói và gửi sang sv_server.
- *
- * Cách dịch:
+ * Cách chạy
  *   gcc -o sv_client sv_client.c
- *
- * Cách chạy:
  *   ./sv_client <địa chỉ IP> <cổng>
  *   Ví dụ: ./sv_client 127.0.0.1 9090
  */
@@ -26,13 +22,13 @@
 
 /* Cấu trúc lưu thông tin sinh viên */
 typedef struct {
-    char mssv[20];          /* Mã số sinh viên         */
-    char ho_ten[100];       /* Họ và tên               */
-    char ngay_sinh[15];     /* Ngày sinh dạng YYYY-MM-DD */
-    float diem_tb;          /* Điểm trung bình          */
+    char mssv[20];
+    char ho_ten[100];
+    char ngay_sinh[15];     
+    float diem_tb;       
 } SinhVien;
 
-/* Hàm đọc một dòng từ stdin, bỏ ký tự '\n' cuối */
+/* Hàm đọc một dòng từ stdin */
 static void doc_dong(const char *prompt, char *buf, int buf_size)
 {
     printf("%s", prompt);
