@@ -1,19 +1,12 @@
 /*
- * sv_server.c
  * Bài tập 4
  *
  * Chương trình sv_server: nhận dữ liệu sinh viên từ sv_client,
  * in ra màn hình và đồng thời ghi vào file log.
- *
  * Mỗi dòng log có dạng:
  *   <IP_client> <YYYY-MM-DD> <HH:MM:SS> <MSSV> <HO_TEN> <NGAY_SINH> <DIEM_TB>
- * Ví dụ:
- *   127.0.0.1 2023-04-10 09:00:00 20201234 Nguyen Van A 2002-04-10 3.99
- *
- * Cách dịch:
- *   gcc -o sv_server sv_server.c
- *
  * Cách chạy:
+ *   gcc -o sv_server sv_server.c
  *   ./sv_server <cổng> <tên file log>
  *   Ví dụ: ./sv_server 9090 sv_log.txt
  */
@@ -31,7 +24,7 @@
 #define BUFFER_SIZE   1024
 #define BACKLOG       5
 
-/* Hàm lấy thời gian hiện tại dạng "YYYY-MM-DD HH:MM:SS" */
+/* Hàm lấy thời gian hiện tại */
 static void get_timestamp(char *buf, int buf_size)
 {
     time_t now = time(NULL);
@@ -39,10 +32,7 @@ static void get_timestamp(char *buf, int buf_size)
     strftime(buf, buf_size, "%Y-%m-%d %H:%M:%S", tm_info);
 }
 
-/* Hàm xử lý một kết nối client                                       */
-/*   - Nhận toàn bộ dữ liệu                                           */
-/*   - Phân tích chuỗi "MSSV|HO_TEN|NGAY_SINH|DIEM_TB"               */
-/*   - In ra màn hình và ghi vào file log                             */
+/* Hàm xử lý một kết nối client */
 static void xu_ly_client(int client_sock,
                           const char *client_ip,
                           const char *log_file)
@@ -50,7 +40,7 @@ static void xu_ly_client(int client_sock,
     char buf[BUFFER_SIZE];
     int  total = 0;
 
-    /* Nhận dữ liệu (có thể đến trong nhiều đoạn nhỏ với TCP) */
+    /* Nhận dữ liệu */
     while (total < (int)sizeof(buf) - 1) {
         int n = recv(client_sock, buf + total, sizeof(buf) - 1 - total, 0);
         if (n <= 0)
@@ -109,8 +99,7 @@ static void xu_ly_client(int client_sock,
     char timestamp[30];
     get_timestamp(timestamp, sizeof(timestamp));
 
-    /* Tạo dòng log theo định dạng yêu cầu:                             */
-    /*   <IP> <DATE> <TIME> <MSSV> <HO_TEN> <NGAY_SINH> <DIEM_TB>      */
+    /* Tạo dòng log theo định dạng yêu cầu: */
     char log_line[BUFFER_SIZE * 2];
     snprintf(log_line, sizeof(log_line),
              "%s %s %s %s %s %.2f",
