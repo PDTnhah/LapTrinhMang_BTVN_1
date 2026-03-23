@@ -1,5 +1,5 @@
 /*
- * Bài tập 2 - tcp_server
+ * Bài tập 2
  * Đợi kết nối ở cổng xác định bởi tham số dòng lệnh.
  * Mỗi khi có client kết nối:
  *   - Gửi nội dung file chào cho client
